@@ -1,0 +1,42 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+@baseURL= projects
+@currentId = e6e6aaf8-8b80-4613-ade9-ce6389c4c582
+
+
+
+GET http://{{hostname}}:{{port}}/{{baseURL}}/
+
+###
+
+POST http://{{hostname}}:{{port}}/{{baseURL}}/ HTTP/1.1
+Content-Type: {{contentType}}
+
+
+//{
+//  "title": "First Project",
+//  "description": "This is the first project of the year",
+//  "members":["7099e081-2261-4725-8a9c-336952a939e2", "341d94ef-1e8a-4f2c-992d-956e23004909"]
+//}
+{
+  "title": "Second Project",
+  "description": "This is the second project of the year",
+  "members":["7099e081-2261-4725-8a9c-336952a939e2", "341d94ef-1e8a-4f2c-992d-956e23004909"]
+}
+
+###
+
+PATCH http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "title": "My Very First Projeect"
+}
+
+
+###
+DELETE http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
+
