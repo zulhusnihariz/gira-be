@@ -1,0 +1,38 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+@currentId = e6e6aaf8-8b80-4613-ade9-ce6389c4c582
+
+
+
+GET http://{{hostname}}:{{port}}/users/
+
+###
+
+POST http://{{hostname}}:{{port}}/users/ HTTP/1.1
+Content-Type: {{contentType}}
+
+
+{
+  "username": "Molly",
+  "email": "molly@gmail.com",
+  "mobile": "012-3125457",
+  "password": "1234",
+  "roleId":"3aee61eb-6a83-4a72-b1aa-311323710c3b"
+}
+
+###
+
+PATCH http://{{hostname}}:{{port}}/users/{{currentId}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "username": "MollyB"
+}
+
+
+###
+DELETE http://{{hostname}}:{{port}}/users/{{currentId}} HTTP/1.1
+
