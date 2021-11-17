@@ -2,19 +2,20 @@ import {
   Entity,
   Column,
   OneToOne,
-  BaseEntity,
   CreateDateColumn,
   PrimaryGeneratedColumn,
-  JoinColumn,
   ManyToOne,
+  ManyToMany,
+  OneToMany,
+  JoinTable,
 } from 'typeorm'
 import { Credential } from './credential.entity'
 import { Role } from './role.entity'
+import { Project } from './project.entity'
+import { UserProject } from './user-project.entity'
+import { BaseEntity } from './base.entity'
 @Entity()
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string
-
   @Column()
   username: string
 
@@ -34,9 +35,6 @@ export class User extends BaseEntity {
   @ManyToOne(() => Role, role => role.user, { eager: true })
   role: Role
 
-  @CreateDateColumn({ type: 'timestamp' })
-  createdAt: Date
-
-  @CreateDateColumn({ type: 'timestamp' })
-  updatedAt: Date
+  @OneToMany(() => UserProject, userProjects => userProjects.user)
+  projects: UserProject[]
 }
