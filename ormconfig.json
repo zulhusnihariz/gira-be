@@ -7,6 +7,8 @@
   "password": "password1",
   "database": "gira_local",
   "entities": ["src/entities/*.entity.ts"],
+  "seeds": ["src/seeds/**/*.seed.ts"],
+  "factories": ["src/factories/**/*.factory.ts"],
   "logging": true,
   "synchronize": true
 }
