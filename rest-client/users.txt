@@ -3,15 +3,16 @@
 @host = {{hostname}}:{{port}}
 @contentType = application/json
 
+@baseURL= users
 @currentId = e6e6aaf8-8b80-4613-ade9-ce6389c4c582
 
 
 
-GET http://{{hostname}}:{{port}}/users/
+GET http://{{hostname}}:{{port}}/{{baseURL}}/
 
 ###
 
-POST http://{{hostname}}:{{port}}/users/ HTTP/1.1
+POST http://{{hostname}}:{{port}}/{{baseURL}}/ HTTP/1.1
 Content-Type: {{contentType}}
 
 
@@ -25,7 +26,7 @@ Content-Type: {{contentType}}
 
 ###
 
-PATCH http://{{hostname}}:{{port}}/users/{{currentId}} HTTP/1.1
+PATCH http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
@@ -34,5 +35,5 @@ Content-Type: {{contentType}}
 
 
 ###
-DELETE http://{{hostname}}:{{port}}/users/{{currentId}} HTTP/1.1
+DELETE http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
 
