@@ -3,4 +3,5 @@ export type SignUp = {
   email: string
   mobile: string
   password: string
+  roleId: string
 }
