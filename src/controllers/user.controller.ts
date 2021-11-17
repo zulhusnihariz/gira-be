@@ -3,12 +3,33 @@ import { Request, Response } from 'express'
 import { Credential, User } from '../entities'
 import { SignUp } from '../types'
 
+const filter = { relations: ['projects', 'projects.project'] }
+
 export class UserController {
-  async GetAllUser(req: Request, res: Response) {
-    const user = await getRepository(User).find()
+  /* -------------------------------------------------------------------------- */
+  /*                                   CREATE                                   */
+  /* -------------------------------------------------------------------------- */
+  async PostUser(req: Request, res: Response) {
+    const { password, ...userData }: SignUp = req.body
+    const user = await getRepository(User).save(userData)
+    await getRepository(Credential).save({ password, userId: user.id })
 
     res.json(user)
   }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   GET ALL                                  */
+  /* -------------------------------------------------------------------------- */
+
+  async GetAllUsers(req: Request, res: Response) {
+    const user = await getRepository(User).find(filter)
+
+    res.json(user)
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  GET BY ID                                 */
+  /* -------------------------------------------------------------------------- */
 
   async GetUserById(req: Request, res: Response) {
     const userId: string = req.params.id
@@ -17,13 +38,9 @@ export class UserController {
     res.json(user)
   }
 
-  async PostUser(req: Request, res: Response) {
-    const { password, ...userData }: SignUp = req.body
-    const user = await getRepository(User).save(userData)
-    await getRepository(Credential).save({ password, userId: user.id })
-
-    res.json(user)
-  }
+  /* -------------------------------------------------------------------------- */
+  /*                                UPDATE BY ID                                */
+  /* -------------------------------------------------------------------------- */
 
   async UpdateUser(req: Request, res: Response) {
     const userId: string = req.params.id
@@ -33,6 +50,10 @@ export class UserController {
 
     res.json(updatedUser)
   }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   DELETE                                   */
+  /* -------------------------------------------------------------------------- */
 
   async DeleteUser(req: Request, res: Response) {
     const userId: string = req.params.id
