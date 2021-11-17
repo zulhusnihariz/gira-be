@@ -1,0 +1,35 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+
+
+GET http://{{hostname}}:{{port}}/users/
+
+###
+
+POST http://{{hostname}}:{{port}}/users/ HTTP/1.1
+Content-Type: {{contentType}}
+
+
+{
+  "username": "Michael",
+  "email": "michael@michael.com",
+  "mobile": "013-1231251",
+  "password": "1234"
+}
+
+###
+
+PATCH http://{{hostname}}:{{port}}/users/2c308dce-6606-4987-9d84-4bec2329c1d5 HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "username": "Jim"
+}
+
+
+###
+DELETE http://{{hostname}}:{{port}}/users/4cd3f1a5-ebba-4300-855b-8e931c89837b HTTP/1.1
+
