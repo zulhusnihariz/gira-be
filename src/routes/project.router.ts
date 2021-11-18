@@ -6,7 +6,7 @@ class Project extends ProjectController {
   constructor() {
     super()
     Router.get('/', this.GetAllProjects)
-    Router.get('/:id', this.GetProjectById)
+    Router.get('/id/:id', this.GetProjectById)
     Router.post('/', this.PostProject)
     Router.delete('/:id', this.DeleteProject)
     Router.patch('/:id', this.UpdateProject)

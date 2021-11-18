@@ -6,10 +6,11 @@ class User extends UserController {
   constructor() {
     super()
     Router.get('/', this.GetAllUsers)
-    Router.get('/:id', this.GetUserById)
+    Router.get('/id/:id', this.GetUserById)
     Router.post('/', this.PostUser)
     Router.delete('/:id', this.DeleteUser)
     Router.patch('/:id', this.UpdateUser)
+    Router.get('/manager/all', this.GetManagers)
   }
 }
 

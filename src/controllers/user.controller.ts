@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm'
 import { Request, Response } from 'express'
-import { Credential, User } from '../entities'
+import { Credential, User, Role } from '../entities'
 import { SignUp } from '../types'
 
 const filter = { relations: ['projects', 'projects.project'] }
@@ -60,5 +60,16 @@ export class UserController {
     await getRepository(User).delete(userId)
 
     return res.send({ message: 'successfully deleted' })
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                GET MANAGERS                                */
+  /* -------------------------------------------------------------------------- */
+
+  async GetManagers(req: Request, res: Response) {
+    console.log('inside GetManagers')
+    const roleManager = await getRepository(Role).find({ where: { name: 'manager' } })
+    const managers = await getRepository(User).find({ where: { roleId: roleManager[0].id } })
+    res.json(managers)
   }
 }
