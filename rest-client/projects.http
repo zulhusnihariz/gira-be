@@ -8,11 +8,15 @@
 
 
 
-GET http://{{hostname}}:{{port}}/{{baseURL}}/
+GET http://{{host}}/{{baseURL}}/
 
 ###
 
-POST http://{{hostname}}:{{port}}/{{baseURL}}/ HTTP/1.1
+GET http://{{host}}/{{baseURL}}/id/{{currentId}}
+
+###
+
+POST http://{{host}}/{{baseURL}}/ HTTP/1.1
 Content-Type: {{contentType}}
 
 
@@ -29,7 +33,7 @@ Content-Type: {{contentType}}
 
 ###
 
-PATCH http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
+PATCH http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
@@ -38,5 +42,5 @@ Content-Type: {{contentType}}
 
 
 ###
-DELETE http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
+DELETE http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
 

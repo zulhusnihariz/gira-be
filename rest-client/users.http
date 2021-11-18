@@ -4,15 +4,19 @@
 @contentType = application/json
 
 @baseURL= users
-@currentId = e6e6aaf8-8b80-4613-ade9-ce6389c4c582
+@currentId = 341d94ef-1e8a-4f2c-992d-956e23004909
 
 
 
-GET http://{{hostname}}:{{port}}/{{baseURL}}/
+GET http://{{host}}/{{baseURL}}/
 
 ###
 
-POST http://{{hostname}}:{{port}}/{{baseURL}}/ HTTP/1.1
+GET http://{{host}}/{{baseURL}}/id/{{currentId}}
+
+###
+
+POST http://{{host}}/{{baseURL}}/ HTTP/1.1
 Content-Type: {{contentType}}
 
 
@@ -26,14 +30,19 @@ Content-Type: {{contentType}}
 
 ###
 
-PATCH http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
+PATCH http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
   "username": "MollyB"
 }
 
+###
+
+DELETE http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
 
 ###
-DELETE http://{{hostname}}:{{port}}/{{baseURL}}/{{currentId}} HTTP/1.1
 
+GET http://{{host}}/{{baseURL}}/manager/all
+
+###
