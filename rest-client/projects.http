@@ -4,7 +4,7 @@
 @contentType = application/json
 
 @baseURL= projects
-@currentId = e6e6aaf8-8b80-4613-ade9-ce6389c4c582
+@currentId = d98d5c38-1ff9-4e75-ad20-a7d1428a426b
 
 
 
@@ -26,9 +26,9 @@ Content-Type: {{contentType}}
 //  "members":["7099e081-2261-4725-8a9c-336952a939e2", "341d94ef-1e8a-4f2c-992d-956e23004909"]
 //}
 {
-  "title": "Second Project",
-  "description": "This is the second project of the year",
-  "members":["7099e081-2261-4725-8a9c-336952a939e2", "341d94ef-1e8a-4f2c-992d-956e23004909"]
+  "title": "Third Project",
+  "description": "This is the third project of the year",
+  "members":["7099e081-2261-4725-8a9c-336952a939e2", "0488b2fb-38d9-4c26-8fda-23e0a91b18ac"]
 }
 
 ###
@@ -37,9 +37,9 @@ PATCH http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "title": "My Very First Projeect"
+  "title": "Very Very First Project",
+  "members":["0488b2fb-38d9-4c26-8fda-23e0a91b18ac", "7099e081-2261-4725-8a9c-336952a939e2"]
 }
-
 
 ###
 DELETE http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
