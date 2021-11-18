@@ -1,0 +1,20 @@
+{
+  "details": {
+    "first": {
+      "id": "d98d5c38-1ff9-4e75-ad20-a7d1428a426b",
+      "title": "First Project",
+      "description": "This is the first project",
+      "members": [
+        "4da7c5c7-3676-4107-97e0-81bcb47a5d57",
+        "341d94ef-1e8a-4f2c-992d-956e23004909",
+        "94d7d5f9-a768-4e72-9949-95ba31d9b69b"
+      ]
+    },
+    "second": {
+      "id": "ea51f2af-cd1a-4816-8f5a-bdfc5cf0c0f8",
+      "title": "Second Project",
+      "description": "This is the second project",
+      "members": ["0488b2fb-38d9-4c26-8fda-23e0a91b18ac", "7099e081-2261-4725-8a9c-336952a939e2"]
+    }
+  }
+}
