@@ -43,13 +43,27 @@ export class ProjectController {
 
   /* -------------------------------------------------------------------------- */
   /*                                UPDATE BY ID                                */
-  /* -------------------------------------------------------------------------- */ 5
+  /* -------------------------------------------------------------------------- */
 
   async UpdateProject(req: Request, res: Response) {
     const projectId: string = req.params.id
     const project: Project = req.body
 
-    const updatedUser = await getRepository(Project).update(projectId, project)
+    const { members, ...rest } = project
+
+    if (project.members.length > 0) {
+      const currentMembers = await getRepository(UserProject).find({
+        where: { projectId },
+      })
+
+      await getRepository(UserProject).delete(currentMembers.map(el => el.id))
+
+      for (const id of project.members) {
+        await getRepository(UserProject).save({ userId: `${id}`, projectId: projectId })
+      }
+    }
+
+    const updatedUser = await getRepository(Project).update(projectId, rest)
 
     res.json(updatedUser)
   }
@@ -60,7 +74,13 @@ export class ProjectController {
 
   async DeleteProject(req: Request, res: Response) {
     const projectId: string = req.params.id
-    await getRepository(User).delete(projectId)
+
+    const currentMembers = await getRepository(UserProject).find({
+      where: { projectId },
+    })
+
+    await getRepository(UserProject).delete(currentMembers.map(el => el.id))
+    await getRepository(Project).delete(projectId)
 
     return res.send({ message: 'successfully deleted' })
   }
