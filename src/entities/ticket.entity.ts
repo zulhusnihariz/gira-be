@@ -1,9 +1,10 @@
-import { Entity, Column, OneToMany } from 'typeorm'
+import { Entity, Column, OneToOne, OneToMany, JoinTable } from 'typeorm'
 import { BaseEntity } from './base.entity'
 import { UserProject } from './user-project.entity'
+import { User } from './user.entity'
 
 @Entity()
-export class Project extends BaseEntity {
+export class Ticket extends BaseEntity {
   @Column()
   title: string
 

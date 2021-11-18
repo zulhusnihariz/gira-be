@@ -1,6 +1,6 @@
-import { getRepository, getCustomRepository } from 'typeorm'
+import { getCustomRepository } from 'typeorm'
 import { Request, Response } from 'express'
-import { Credential, User, Role } from '../entities'
+import { User } from '../entities'
 import { SignUp } from '../types'
 import { UserRepository } from '../repositories'
 

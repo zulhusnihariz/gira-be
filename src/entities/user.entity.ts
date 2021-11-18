@@ -1,17 +1,6 @@
-import {
-  Entity,
-  Column,
-  OneToOne,
-  CreateDateColumn,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  ManyToMany,
-  OneToMany,
-  JoinTable,
-} from 'typeorm'
+import { Entity, Column, OneToOne, ManyToOne, OneToMany } from 'typeorm'
 import { Credential } from './credential.entity'
 import { Role } from './role.entity'
-import { Project } from './project.entity'
 import { UserProject } from './user-project.entity'
 import { BaseEntity } from './base.entity'
 @Entity()
