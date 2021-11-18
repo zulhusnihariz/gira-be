@@ -11,9 +11,9 @@ export class UserProject extends BaseEntity {
   @Column({ select: false })
   projectId: string
 
-  @ManyToOne(() => User, user => user.projects, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, user => user.projects)
   user: User
 
-  @ManyToOne(() => Project, project => project.members, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Project, project => project.members)
   project: Project
 }
