@@ -1,6 +1,8 @@
-import { getRepository, Repository } from 'typeorm'
+import { getCustomRepository } from 'typeorm'
 import { Request, Response } from 'express'
-import { Project, User, UserProject } from '../entities'
+import { Project } from '../entities'
+
+import { ProjectRepository } from '../repositories/project.repository'
 
 const filter = { relations: ['members', 'members.user'] }
 
@@ -11,12 +13,7 @@ export class ProjectController {
 
   async PostProject(req: Request, res: Response) {
     const project: Project = req.body
-
-    const createdProject = await getRepository(Project).save(project)
-
-    for (const id of project.members)
-      await getRepository(UserProject).save({ userId: `${id}`, projectId: createdProject.id })
-
+    const createdProject = await getCustomRepository(ProjectRepository).saveProject(project)
     res.json(createdProject)
   }
 
@@ -25,7 +22,7 @@ export class ProjectController {
   /* -------------------------------------------------------------------------- */
 
   async GetAllProjects(req: Request, res: Response) {
-    const project = await getRepository(Project).find(filter)
+    const project = await getCustomRepository(ProjectRepository).find(filter)
 
     res.json(project)
   }
@@ -36,7 +33,7 @@ export class ProjectController {
 
   async GetProjectById(req: Request, res: Response) {
     const projectId: string = req.params.id
-    const project = await getRepository(Project).findOne(projectId, filter)
+    const project = await getCustomRepository(ProjectRepository).findOne(projectId, filter)
 
     res.json(project)
   }
@@ -49,23 +46,12 @@ export class ProjectController {
     const projectId: string = req.params.id
     const project: Project = req.body
 
-    const { members, ...rest } = project
+    const updatedProject = await getCustomRepository(ProjectRepository).updateProject(
+      projectId,
+      project,
+    )
 
-    if (project.members.length > 0) {
-      const currentMembers = await getRepository(UserProject).find({
-        where: { projectId },
-      })
-
-      await getRepository(UserProject).delete(currentMembers.map(el => el.id))
-
-      for (const id of project.members) {
-        await getRepository(UserProject).save({ userId: `${id}`, projectId: projectId })
-      }
-    }
-
-    const updatedUser = await getRepository(Project).update(projectId, rest)
-
-    res.json(updatedUser)
+    res.json(updatedProject)
   }
 
   /* -------------------------------------------------------------------------- */
@@ -74,13 +60,7 @@ export class ProjectController {
 
   async DeleteProject(req: Request, res: Response) {
     const projectId: string = req.params.id
-
-    const currentMembers = await getRepository(UserProject).find({
-      where: { projectId },
-    })
-
-    await getRepository(UserProject).delete(currentMembers.map(el => el.id))
-    await getRepository(Project).delete(projectId)
+    await getCustomRepository(ProjectRepository).deleteProject(projectId)
 
     return res.send({ message: 'successfully deleted' })
   }
