@@ -4,7 +4,7 @@ import { Project } from '../entities'
 
 import { ProjectRepository } from '../repositories/project.repository'
 
-const filter = { relations: ['members', 'members.user'] }
+const filter = { relations: ['members', 'members.user', 'tickets'] }
 
 export class ProjectController {
   /* -------------------------------------------------------------------------- */

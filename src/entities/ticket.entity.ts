@@ -2,6 +2,7 @@ import { Entity, Column, ManyToOne, OneToMany, JoinTable } from 'typeorm'
 import { BaseEntity } from './base.entity'
 import { User } from './user.entity'
 import { TicketAssignment } from './ticket-assignment.entity'
+import { Project } from './project.entity'
 
 @Entity()
 export class Ticket extends BaseEntity {
@@ -25,6 +26,9 @@ export class Ticket extends BaseEntity {
 
   @ManyToOne(() => User, user => user.ticketIssued, { eager: true })
   author: User
+
+  @ManyToOne(() => Project, project => project.tickets)
+  project: Project
 
   @OneToMany(() => TicketAssignment, userTickets => userTickets.ticket)
   assignedTo: TicketAssignment[]

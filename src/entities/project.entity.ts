@@ -1,6 +1,7 @@
 import { Entity, Column, OneToMany } from 'typeorm'
 import { BaseEntity } from './base.entity'
 import { UserProject } from './user-project.entity'
+import { Ticket } from './ticket.entity'
 
 @Entity()
 export class Project extends BaseEntity {
@@ -12,4 +13,7 @@ export class Project extends BaseEntity {
 
   @OneToMany(() => UserProject, userProjects => userProjects.project)
   members: UserProject[]
+
+  @OneToMany(() => Ticket, ticket => ticket.project)
+  tickets: Ticket[]
 }

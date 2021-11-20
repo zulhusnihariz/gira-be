@@ -30,7 +30,7 @@ export class User extends BaseEntity {
   projects: UserProject[]
 
   @OneToMany(() => Ticket, ticket => ticket.author)
-  ticketIssued: Ticket
+  ticketIssued: Ticket[]
 
   @OneToMany(() => TicketAssignment, userTickets => userTickets.user)
   ticketAssigned: TicketAssignment[]

@@ -29,9 +29,20 @@ Content-Type: {{contentType}}
   "type":"Bug",
   "estimatedTime":"1 hours",
   "author":"0488b2fb-38d9-4c26-8fda-23e0a91b18ac",
-  "assignedTo": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b", "341d94ef-1e8a-4f2c-992d-956e23004909"]
-  // "project": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
-  // "comments": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
+  "assignedTo": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b", "341d94ef-1e8a-4f2c-992d-956e23004909"],
+  "project": "d98d5c38-1ff9-4e75-ad20-a7d1428a426b"
+}
+{
+  "id": "4cfd226f-252a-490f-bb72-9ba6baa42c09",
+  "title":"Second Ticket Ever",
+  "description":"Also written by Blumenfeld",
+  "status":"Pending",
+  "priority":"High",
+  "type":"Bug",
+  "estimatedTime":"2 hours",
+  "author":"0488b2fb-38d9-4c26-8fda-23e0a91b18ac",
+  "assignedTo": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"],
+  "project": "d98d5c38-1ff9-4e75-ad20-a7d1428a426b"
 }
 
 ###
@@ -45,8 +56,6 @@ Content-Type: {{contentType}}
   "title":"Very First Ticket",
   "description":"Very First Ticket absolutely written by the GOAT, Blumenfeld",
   "assignedTo": ["7099e081-2261-4725-8a9c-336952a939e2"]
-  // "project": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
-  // "comments": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
 }
 
 ###
