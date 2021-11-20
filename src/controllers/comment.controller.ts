@@ -1,63 +1,63 @@
 import { getCustomRepository } from 'typeorm'
 import { Request, Response } from 'express'
-import { Ticket } from '../entities'
-import { TicketRepository } from '../repositories'
+import { Comment } from '../entities'
+import { CommentRepository } from '../repositories'
 
-const filter = { relations: ['assignedTo', 'assignedTo.user', 'comments'] }
+const filter = { relations: [] }
 
-export class TicketController {
+export class CommentController {
   /* -------------------------------------------------------------------------- */
   /*                                   CREATE                                   */
   /* -------------------------------------------------------------------------- */
-  async PostTicket(req: Request, res: Response) {
-    const ticket: Ticket = req.body
-    const createdTicket = await getCustomRepository(TicketRepository).saveTicket(ticket)
+  async PostComment(req: Request, res: Response) {
+    const comment: Comment = req.body
+    const createdComment = await getCustomRepository(CommentRepository).save(comment)
 
-    res.json(createdTicket)
+    res.json(createdComment)
   }
 
   /* -------------------------------------------------------------------------- */
   /*                                   GET ALL                                  */
   /* -------------------------------------------------------------------------- */
 
-  async GetAllTickets(req: Request, res: Response) {
-    const ticket = await getCustomRepository(TicketRepository).find(filter)
+  async GetAllComments(req: Request, res: Response) {
+    const comment = await getCustomRepository(CommentRepository).find(filter)
 
-    res.json(ticket)
+    res.json(comment)
   }
 
   /* -------------------------------------------------------------------------- */
   /*                                  GET BY ID                                 */
   /* -------------------------------------------------------------------------- */
 
-  async GetTicketById(req: Request, res: Response) {
-    const ticketId: string = req.params.id
-    const ticket = await getCustomRepository(TicketRepository).findOne(ticketId, filter)
+  async GetCommentById(req: Request, res: Response) {
+    const commentId: string = req.params.id
+    const comment = await getCustomRepository(CommentRepository).findOne(commentId, filter)
 
-    res.json(ticket)
+    res.json(comment)
   }
 
   /* -------------------------------------------------------------------------- */
   /*                                UPDATE BY ID                                */
   /* -------------------------------------------------------------------------- */
 
-  async UpdateTicket(req: Request, res: Response) {
-    const ticketId: string = req.params.id
-    const ticket: Ticket = req.body
+  async UpdateComment(req: Request, res: Response) {
+    const commentId: string = req.params.id
+    const comment: Comment = req.body
 
-    const updatedTicket = await getCustomRepository(TicketRepository).updateTicket(ticketId, ticket)
+    const updatedComment = await getCustomRepository(CommentRepository).update(commentId, comment)
 
-    res.json(updatedTicket)
+    res.json(updatedComment)
   }
 
   /* -------------------------------------------------------------------------- */
   /*                                   DELETE                                   */
   /* -------------------------------------------------------------------------- */
 
-  async DeleteTicket(req: Request, res: Response) {
-    const ticketId: string = req.params.id
+  async DeleteComment(req: Request, res: Response) {
+    const commentId: string = req.params.id
 
-    await getCustomRepository(TicketRepository).deleteTicket(ticketId)
+    await getCustomRepository(CommentRepository).delete(commentId)
 
     return res.send({ message: 'successfully deleted' })
   }
