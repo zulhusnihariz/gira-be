@@ -1,0 +1,56 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+@baseURL= tickets
+@currentId = d1731e0e-e2de-44dd-b103-a2f61f993b0d
+
+
+
+GET http://{{host}}/{{baseURL}}/
+
+###
+
+GET http://{{host}}/{{baseURL}}/id/{{currentId}}
+
+###
+
+POST http://{{host}}/{{baseURL}}/ HTTP/1.1
+Content-Type: {{contentType}}
+
+
+{
+  "id": "d1731e0e-e2de-44dd-b103-a2f61f993b0d",
+  "title":"First Ticket",
+  "description":"Ticket written by Blumenfeld",
+  "status":"Pending",
+  "priority":"Moderate",
+  "type":"Bug",
+  "estimatedTime":"1 hours",
+  "author":"0488b2fb-38d9-4c26-8fda-23e0a91b18ac",
+  "assignedTo": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b", "341d94ef-1e8a-4f2c-992d-956e23004909"]
+  // "project": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
+  // "comments": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
+}
+
+###
+
+PATCH http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
+Content-Type: {{contentType}}
+
+
+
+{
+  "title":"Very First Ticket",
+  "description":"Very First Ticket absolutely written by the GOAT, Blumenfeld",
+  "assignedTo": ["7099e081-2261-4725-8a9c-336952a939e2"]
+  // "project": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
+  // "comments": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"]
+}
+
+###
+
+DELETE http://{{host}}/{{baseURL}}/{{currentId}} HTTP/1.1
+
+###
