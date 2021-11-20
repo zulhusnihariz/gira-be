@@ -6,11 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -e ts -w ./src -x npm run watch:serve",
-    "watch:serve": "npm run schema:drop && npm run seed:run && ts-node src/app.ts",
+    "watch:serve": "ts-node src/app.ts",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
-    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync"
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
+    "migrate:run": "npm run schema:drop && npm run seed:run",
+    "all": "npm run migrate:run && npm start"
   },
   "author": "",
   "license": "ISC",
