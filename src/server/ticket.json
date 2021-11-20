@@ -1,0 +1,31 @@
+{
+  "details": {
+    "first": {
+      "id": "d1731e0e-e2de-44dd-b103-a2f61f993b0d",
+      "title": "First Ticket",
+      "description": "Ticket written by Blumenfeld",
+      "status": "Pending",
+      "priority": "Moderate",
+      "type": "Bug",
+      "estimatedTime": "1 hours",
+      "author": "0488b2fb-38d9-4c26-8fda-23e0a91b18ac",
+      "assignedTo": [
+        "94d7d5f9-a768-4e72-9949-95ba31d9b69b",
+        "341d94ef-1e8a-4f2c-992d-956e23004909"
+      ],
+      "project": "d98d5c38-1ff9-4e75-ad20-a7d1428a426b"
+    },
+    "second": {
+      "id": "4cfd226f-252a-490f-bb72-9ba6baa42c09",
+      "title": "Second Ticket Ever",
+      "description": "Also written by Blumenfeld",
+      "status": "Pending",
+      "priority": "High",
+      "type": "Bug",
+      "estimatedTime": "2 hours",
+      "author": "0488b2fb-38d9-4c26-8fda-23e0a91b18ac",
+      "assignedTo": ["94d7d5f9-a768-4e72-9949-95ba31d9b69b"],
+      "project": "d98d5c38-1ff9-4e75-ad20-a7d1428a426b"
+    }
+  }
+}
