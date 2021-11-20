@@ -3,6 +3,7 @@ import { BaseEntity } from './base.entity'
 import { User } from './user.entity'
 import { TicketAssignment } from './ticket-assignment.entity'
 import { Project } from './project.entity'
+import { Comment } from './comment.entity'
 
 @Entity()
 export class Ticket extends BaseEntity {
@@ -33,8 +34,6 @@ export class Ticket extends BaseEntity {
   @OneToMany(() => TicketAssignment, userTickets => userTickets.ticket)
   assignedTo: TicketAssignment[]
 
-  // @Column()
-  // comments: string
-  // @Column()
-  // comments: string
+  @OneToMany(() => Comment, comment => comment.ticket)
+  comments: Comment[]
 }

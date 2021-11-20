@@ -5,6 +5,7 @@ import { Role } from './role.entity'
 import { UserProject } from './user-project.entity'
 import { Ticket } from './ticket.entity'
 import { TicketAssignment } from './ticket-assignment.entity'
+import { Comment } from './comment.entity'
 @Entity()
 export class User extends BaseEntity {
   @Column()
@@ -34,4 +35,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => TicketAssignment, userTickets => userTickets.user)
   ticketAssigned: TicketAssignment[]
+
+  @OneToMany(() => Comment, comment => comment.sender)
+  comments: Comment[]
 }

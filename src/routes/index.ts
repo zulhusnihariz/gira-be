@@ -11,6 +11,10 @@ const router = [
     BaseURL: '/tickets',
     Router: require('./ticket.router'),
   },
+  {
+    BaseURL: '/comments',
+    Router: require('./comment.router'),
+  },
 ]
 
 module.exports = router
